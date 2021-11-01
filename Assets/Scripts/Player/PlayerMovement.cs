@@ -6,7 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
 
-    public float speed = 12f;
+    public float speed;
+    float normalSpeed = 8f;
+    float runSpeed = 18f;
+
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -24,6 +27,15 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = runSpeed;
+        }
+        else
+        {
+            speed = normalSpeed;
         }
 
         float x = Input.GetAxis("Horizontal");
